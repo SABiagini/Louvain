@@ -1,7 +1,7 @@
 # Louvain NCD
 Nested Community Detection
 
-Here, we make available the pipeline used for community detection in our work "Patterns of genetic connectedness between modern and medieval Estonians reveal the origins of a major ancestry component of Finns". All credits will be given to the creators of each tool, R package, and software implemented in our scripts.
+Here, we make available the pipeline used for community detection in our work "Patterns of genetic connectedness between modern and medieval Estonians reveal the origins of a major ancestry component of Finns". All credits will be given to the creators of each tool, R library, and software implemented in our scripts.
 
 This guide provides a step-by-step instruction for reproducing our analysis.
 
