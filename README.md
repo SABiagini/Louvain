@@ -70,3 +70,5 @@ sh PiC.sh
 This program has been tested on different dataset with a variable number of edges. In the following image the results for nine different dataset. Time is in minutes (on the X axis) while number of edges is in millions (on the Y axis). We ran each test on 5 cores with 5Gb each. Regarding the time needed for running NCD.R, eight out of nine dataset took 3 minutes while the remaining one took 7 minutes. 
 
 ![alt text](https://github.com/SABiagini/Louvain/blob/main/PiC_test.svg)
+
+After running this program, a matrix of individual connectedness will be generated within each of the Community folders. Consider the matrix you want based on which level you want to explore (e.g., imagine you want to explore the second Community level, then you will have to look into the folder MDD, the second Daughter level). The file to look at is PercMatrix_alpha.txt but, if your Community number is higher than 26, consider the non alphanumeric matrix PercMatrix.txt.
