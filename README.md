@@ -54,7 +54,16 @@ Rscript NCD.R edgelist.coef
 The script is designed to run for 5 nested cycles (a first Mother level "M", followed by 4 Daughter levels "D"). After the run, a folder for each level will be generated. Within each folder you will find the corresponding Community files (a two column file with sample ID in first column and Community assignment in the second one). In the main folder, you will also find a file per Community level listing the p-values associated to each detected Community.
 # PiC score
 In this last step you will calculate the probability of individual connectedness (PiC) score. By the end of this last step, outliers will be removed and a matrix of individual connectedness will be generated. 
-Run the program:
+
+Required R libraries:
+```
+install.packages(EnvStats)
+install.packages(outliers)
+install.packages(reshape)
+```
+You will also need datamash (https://www.gnu.org/software/datamash/).
+
+Then you can run the program:
 ```
 sh PiC.sh
 ```
