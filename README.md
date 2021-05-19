@@ -58,4 +58,6 @@ Run the program:
 ```
 sh PiC.sh
 ```
-This program has been tested on different input data 
+This program has been tested on different dataset with a variable number of edges. In the following image the results for nine different dataset. Time is in minutes (on the X axis) while number of edges is in millions (on the Y axis). We ran each test on 5 cores with 5Gb each. Regarding the time needed for running NCD.R, eight out of nine dataset took 3 minutes while the remaining one took 7 minutes. 
+
+![alt text](https://github.com/SABiagini/Louvain/blob/main/PiC_test.svg)
