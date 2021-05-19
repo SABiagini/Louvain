@@ -52,6 +52,8 @@ Then, run the program:
 Rscript NCD.R edgelist.coef
 ```
 The script is designed to run for 5 nested cycles (a first Mother level "M", followed by 4 Daughter levels "D"). After the run, a folder for each level will be generated. Within each folder you will find the corresponding Community files (a two column file with sample ID in first column and Community assignment in the second one). In the main folder, you will also find a file per Community level listing the p-values associated to each detected Community.
+
+Regarding the time needed for running NCD.R, in out tests it took about 3 minutes for eight out of nine dataset, and about 7 minutes for the remaining one.
 # PiC score
 In this last step you will calculate the probability of individual connectedness (PiC) score. By the end of this last step, outliers will be removed and a matrix of individual connectedness will be generated. 
 
@@ -67,7 +69,7 @@ Then you can run the program:
 ```
 sh PiC.sh
 ```
-This program has been tested on different dataset with a variable number of edges. In the following image the results for nine different dataset. Time is in minutes (on the X axis) while number of edges is in millions (on the Y axis). We ran each test on 5 cores with 5Gb each. Regarding the previous step, the time needed for running NCD.R was of about 3 minutes for eight out of nine dataset, and about 7 minutes for the remaining dataset. 
+This program has been tested on different dataset with a variable number of edges. In the following image the results for nine different dataset. Time is in minutes (on the X axis) while number of edges is in millions (on the Y axis). We ran each test on 5 cores with 5Gb each.
 
 ![alt text](https://github.com/SABiagini/Louvain/blob/main/PiC_test.svg)
 
