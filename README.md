@@ -25,7 +25,7 @@ ID2 ID4 value
 
 with each row from the first two columns representing two connected individuals in your dataset (nodes), and the third column describing the weight of their connection (edge). As in our paper, this value is represented by a kinship coefficient that we calculated using IBIS (https://github.com/williamslab/ibis).
 
-In the following example, INPUT is a PLINK file (.bed, .bim, and .fam files) and OUT.coef is the output from our run.
+In the following example, INPUT is a PLINK file (.bed, .bim, and .fam files) and OUT.coef is the output from IBIS.
 
 ```
 ibis -bfile INPUT -min_l 5 -a 0 -c 0.0005 -maxDist 0.1 -mt 400 -er .004 -2 -mt2 400 -t 16 -noFamID -bin -printCoef -f OUT
