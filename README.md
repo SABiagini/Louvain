@@ -35,7 +35,7 @@ awk '$3>0.001' OUT.coef | cut -f1-3 | tail -n +2 > edgelist.coef
 ```
 Each line in the edgelist.coef file will contain a pair of individuals sharing at least one >5 cM IBD chunk and with a kinship coefficient >0.001.
 
-By the end of this first step, your edgelist will contain three columns: individual1, individual2, their kinship coefficient.
+By the end of this first step, your edgelist will contain three columns: individual1, individual2, their kinship coefficient (no header needed).
 
 # NCD.R 
 
