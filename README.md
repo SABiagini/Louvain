@@ -33,9 +33,9 @@ ibis -bfile INPUT -min_l 5 -a 0 -c 0.0005 -maxDist 0.1 -mt 400 -er .004 -2 -mt2 
 awk '$3>0.001' OUT.coef | cut -f1-3 | tail -n +2 > edgelist.coef
 
 ```
-Each line in the edgelist.coef file will contain a pair of individuals sharing at least one >5 cM IBD chunk and with a kinship coefficient >0.001
+Each line in the edgelist.coef file will contain a pair of individuals sharing at least one >5 cM IBD chunk and with a kinship coefficient >0.001.
 
-By the end of this first step, your edgelist will contain three columns: individual1, individual2, their kinship coefficient
+By the end of this first step, your edgelist will contain three columns: individual1, individual2, their kinship coefficient.
 
 # NCD.R 
 
