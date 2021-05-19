@@ -55,7 +55,7 @@ The script is designed to run for 5 nested cycles (a first Mother level "M", fol
 
 Regarding the time needed for running NCD.R, in our tests it took about 3 minutes for eight out of nine dataset, and about 7 minutes for the remaining one.
 # PiC score
-In this last step you will calculate the probability of individual connectedness (PiC) score. By the end of this last step, outliers will be removed and a matrix of individual connectedness will be generated. 
+In this last step you will calculate the probability of individual connectedness (PiC) score. By the end of this last step, outliers will be removed and a matrix of individual connectedness will be generated for each Community level. 
 
 Required R libraries:
 ```
