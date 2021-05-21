@@ -1,4 +1,4 @@
-library(reshape)
+suppressMessages(library(reshape))
 
 args = commandArgs(trailingOnly=TRUE)
 
