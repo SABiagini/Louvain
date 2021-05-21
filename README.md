@@ -73,6 +73,6 @@ This program has been tested on different dataset with a variable number of edge
 
 ![alt text](https://github.com/SABiagini/Louvain/blob/main/PiC_test.svg)
 
-After running this program, a matrix of individual connectedness will be generated within each of the Community folders. Consider the matrix you want based on which level you want to explore (e.g., imagine you want to explore the second Community level, then you will have to look into the folder MDD, the second Daughter level). The file to look at is PercMatrix_alpha.txt but, if your Community number is higher than 26, consider the non alphanumeric matrix PercMatrix.txt. 
-
-File edgelist.zip is a compressed edgelist.coef file. It is ready for testing steps 2 and 3 of the pipeline.
+After running this program, a matrix of individual connectedness will be generated within each of the Community folders. Consider the matrix you want based on which level you want to explore (e.g., imagine you want to explore the second Community level, then you will have to look into the folder MD). The file to look at is PercMatrix_alpha.txt but, if your Community number is higher than 26, consider the non alphanumeric matrix PercMatrix.txt. 
+# Give it a try!
+We prepared a file (edgelist.coef) which is ready for testing steps 2 and 3 of the pipeline. This file contains kinship coefficients for the 1000 Genomes samples (https://www.internationalgenome.org/) calculated on the 22 autosomal chromosomes.
