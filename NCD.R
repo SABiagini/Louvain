@@ -39,7 +39,6 @@ result=c()
 for (i in 1:length(clusterlouvain)){
 	vs = (membership(clusterlouvain)==i)
 	result = c(result,community.significance.test(g,vs))
-	# Print pvalues for level 1 in a dedicated file
 	write(paste("Community M",i,":", result[i]),file="Community_M_pval.txt",append=TRUE)
 }
 x = 0
