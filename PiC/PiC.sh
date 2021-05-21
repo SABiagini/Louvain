@@ -12,15 +12,9 @@ exists()
 ## Outlier removal (WMW)
 ###
 
-sed 's/://g' $pwd/Community_M_pval.txt | cut -d' ' -f3,5 | awk '$2>0.05'| cut -d' ' -f1 > $pwd/M_rem &&
-fgrep -wvf $pwd/M_rem $pwd/M/Community_M.txt > $pwd/M/Community_M_tmp && 
-rm $pwd/M/Community_M.txt && 
-mv $pwd/M/Community_M_tmp $pwd/M/Community_M.txt &&
-
+sed 's/://g' $pwd/Community_M_pval.txt | cut -d' ' -f3,5 | awk '$2>0.05'| cut -d' ' -f1 > $pwd/M_rem && fgrep -wvf $pwd/M_rem $pwd/M/Community_M.txt > $pwd/M/Community_M_tmp && rm $pwd/M/Community_M.txt && mv $pwd/M/Community_M_tmp $pwd/M/Community_M.txt &&
 echo -e '#!/bin/bash' > MD_rem && sed 's/://g' Community_MD_pval.txt | cut -d' ' -f2,3 | sed 's/M//' | sed 's/D/-/g' | awk '$2>0.05'| cut -d' ' -f1 | sed 's/\-/ /g' - | sed 's/^/Community_M/g' - | sed 's/ /D\.txt /g' - | awk '{print "fgrep -wv",$2,"MD/"$1" >","MD/"$1$2"_tmp","&& rm MD/"$1,"&& mv MD/"$1$2"_tmp","MD/"$1,"&&"}' >> MD_rem &&  echo "exit" >> MD_rem && sh MD_rem &&
-
 echo -e '#!/bin/bash' > MDD_rem && sed 's/://g' Community_MDD_pval.txt | cut -d' ' -f2,3 | sed 's/M//' | sed 's/D/-/g' | awk '$2>0.05'| cut -d' ' -f1 | sed 's/\-/ /g' - | sed 's/^/Community_M/g' - | sed 's/ /D /g' - | awk '{print $1$2".txt",$3}' | awk '{print "fgrep -wv",$2,"MDD/"$1" >","MDD/"$1$2"_tmp","&& rm MDD/"$1,"&& mv MDD/"$1$2"_tmp","MDD/"$1,"&&"}' >> MDD_rem &&  echo "exit" >> MDD_rem && sh MDD_rem && 
-
 echo -e '#!/bin/bash' > MDDD_rem && sed 's/://g' Community_MDDD_pval.txt | cut -d' ' -f2,3 | sed 's/M//' | sed 's/D/-/g' | awk '$2>0.05'| cut -d' ' -f1 | sed 's/\-/ /g' - | sed 's/^/Community_M/g' - | sed 's/ /D /g' - | awk '{print $1$2$3".txt",$4}' | awk '{print "fgrep -wv",$2,"MDDD/"$1" >","MDDD/"$1$2"_tmp","&& rm MDDD/"$1,"&& mv MDDD/"$1$2"_tmp","MDDD/"$1,"&&"}' >> MDDD_rem &&  echo "exit" >> MDDD_rem && sh MDDD_rem && 
 
 for i in $pwd/*/*.txt
