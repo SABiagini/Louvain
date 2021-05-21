@@ -27,5 +27,4 @@ close OUT;
 system("sed -i 's/z//g' indcode_alpha");
 system("sed -i 's/Z//g' indcode_alpha");
 
-
 exit;
