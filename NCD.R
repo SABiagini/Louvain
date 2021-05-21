@@ -1,7 +1,8 @@
-library(psych)
-library(igraph)
-library(exactRankTests)
-library(data.table)
+suppressMessages(library(psych))
+suppressMessages(library(igraph))
+suppressMessages(library(exactRankTests))
+suppressMessages(library(data.table))
+
 
 community.significance.test <- function(graph, vs, ...) {
   if (is.directed(graph)) stop("This method requires an undirected graph")
