@@ -28,4 +28,4 @@ cut -f1,2 -d' ' tmp1 | cut -f1,2 -d' ' | tail -n +3 > tempcol &&
 head -n2 tmp1 > temphead &&
 paste tempcol tempmat > tmp2 &&
 cat temphead tmp2 > PercMatrix.txt &&
-rm count2 tmp1 tempmat tempcol temphead tmp2 
+rm count2 tmp1 tempmat tempcol temphead tmp2
