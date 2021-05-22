@@ -51,7 +51,7 @@ Then, run the program:
 ```
 Rscript NCD.R edgelist.coef
 ```
-The script is designed to run for 4 nested cycles (a first Mother level "M", followed by 3 Daughter levels "D"). After the run, a folder for each level will be generated. Within each folder you will find the corresponding Community files (a two column file with sample ID in first column and Community assignment in the second one). In the main folder, you will also find a file per Community level listing the p-values associated to each detected Community.
+The script is designed to run 4 nested cycles (a first Mother level "M", followed by 3 Daughter levels "D"). After the run, a folder for each level will be generated. Within each folder you will find the corresponding Community files (a two column file with sample ID in first column and Community assignment in the second one). In the main folder, you will also find a file per Community level listing the p-values associated to each detected Community.
 
 Regarding the time needed for running NCD.R, in our tests it took about 3 minutes for eight out of nine dataset, and about 7 minutes for the remaining one.
 # PiC score
