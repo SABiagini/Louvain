@@ -33,7 +33,7 @@ IDs_cluster <- cbind(V(g)$name, clusterlouvain$membership)
 df<-as.data.frame(IDs_cluster)
 df$V2 <- as.numeric(as.character(df$V2))
 sort<-df[order(df$V2),]
-dir.create("M")
+if(!dir.exists("M")){ dir.create("M") }
 write.table(sort,"M/Community_M.txt",sep="\t",col.names =c("ID","Community"),row.names = F,quote = FALSE)
 result=c()
 for (i in 1:length(clusterlouvain)){
@@ -54,7 +54,7 @@ for(val in result){
 		df2<-as.data.frame(IDs_cluster2)
 		df2$V2 <- as.numeric(as.character(df2$V2))
 		sort2<-df2[order(df2$V2),]
-		dir.create("MD")
+		if(!dir.exists("MD")){ dir.create("MD") }
 		write.table(sort2,paste("MD/Community_M",x,"D.txt",sep = ""),sep="\t",col.names =c("ID","Community"),row.names = F,quote = FALSE)
 		result2=c()
 			for (y in 1:length(clusterlouvain2)){
@@ -75,7 +75,7 @@ for(val in result){
 				df3<-as.data.frame(IDs_cluster3)
 				df3$V2 <- as.numeric(as.character(df3$V2))
 				sort3<-df3[order(df3$V2),]
-				dir.create("MDD")
+				if(!dir.exists("MDD")){ dir.create("MDD") }
 				write.table(sort3,paste("MDD/Community_M",x,"D",p,"D.txt",sep = ""),sep="\t",col.names =c("ID","Community"),row.names = F,quote = FALSE)	
 				result3=c()
 					for (z in 1:length(clusterlouvain3)){
@@ -96,7 +96,7 @@ for(val in result){
 						df4<-as.data.frame(IDs_cluster4)
 						df4$V2 <- as.numeric(as.character(df4$V2))
 						sort4<-df4[order(df4$V2),]
-						dir.create("MDDD")
+						if(!dir.exists("MDDD")){ dir.create("MDDD") }
 						write.table(sort4,paste("MDDD/Community_M",x,"D",p,"D",s,"D.txt",sep = ""),sep="\t",col.names =c("ID","Community"),row.names = F,quote = FALSE)
 						result4=c()
 						for (r in 1:length(clusterlouvain4)){
@@ -115,8 +115,6 @@ for(val in result){
 							df5<-as.data.frame(IDs_cluster5)
 							df5$V2 <- as.numeric(as.character(df5$V2))
 							sort5<-df5[order(df5$V2),]
-							dir.create("MDDDD")
-							write.table(sort5,paste("MDDDD/Community_M",x,"D",p,"D",s,"D",u,"D.txt",sep = ""),sep="\t",col.names =c("ID","Community"),row.names = F,quote = FALSE)
 							}
 							else{
 								u=u+1
