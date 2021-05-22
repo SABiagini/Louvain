@@ -60,8 +60,7 @@ while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/M/Community_M.txt | 
 
 Rscript $scripts/summary.R list &&
 
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -71,12 +70,13 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode coef.* 
 
 else 
+
 sh $scripts/SumMatrix.sh indcode filt.coef &&
 rm list indcode Rplots.pdf 
 mv filt.coef coef.${PWD##*/} 
@@ -122,9 +122,7 @@ cp $pwd/M/Community_M.txt . &&
 while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MD/Community_M.txt | grep -Pv 'ID\tCommunity' | sed 's/\.\/Community_//g' | sed 's/\.txt//g' | sed 's/\:/\t/g' | sed 's/M[0-9]\+D\t/MD\t/g' | sed 's/M[0-9]\+D[0-9]\+D\t/MDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDDD\t/g' > list &&
 
 Rscript $scripts/summary.R list &&
-
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -134,7 +132,7 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode filt.coef &&
@@ -159,9 +157,7 @@ rm filt.coef &&
 while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MD/Community_M.txt | grep -Pv 'ID\tCommunity' | sed 's/\.\/Community_//g' | sed 's/\.txt//g' | sed 's/\:/\t/g' | sed 's/M[0-9]\+D\t/MD\t/g' | sed 's/M[0-9]\+D[0-9]\+D\t/MDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDDD\t/g' > list &&
 
 Rscript $scripts/summary.R list &&
-
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -171,13 +167,12 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode coef.* 
 
 else 
-
 sh $scripts/SumMatrix.sh indcode $pwd/M/coef.* &&
 rm list indcode Rplots.pdf &&
 mv filt.coef coef.${PWD##*/} 
@@ -223,9 +218,7 @@ cp $pwd/MD/Community* . &&
 while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MDD/Community_M.txt | grep -Pv 'ID\tCommunity' | sed 's/\.\/Community_//g' | sed 's/\.txt//g' | sed 's/\:/\t/g' | sed 's/M[0-9]\+D\t/MD\t/g' | sed 's/M[0-9]\+D[0-9]\+D\t/MDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDDD\t/g' > list &&
 
 Rscript $scripts/summary.R list &&
-
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -235,7 +228,7 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode filt.coef &&
@@ -258,9 +251,7 @@ rm filt.coef  &&
 while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MDD/Community_M.txt | grep -Pv 'ID\tCommunity' | sed 's/\.\/Community_//g' | sed 's/\.txt//g' | sed 's/\:/\t/g' | sed 's/M[0-9]\+D\t/MD\t/g' | sed 's/M[0-9]\+D[0-9]\+D\t/MDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDDD\t/g' > list &&
 
 Rscript $scripts/summary.R list &&
-
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -270,7 +261,7 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode coef.* 
@@ -322,9 +313,7 @@ cp $pwd/MDD/Community* . &&
 while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MDDD/Community_M.txt | grep -Pv 'ID\tCommunity' | sed 's/\.\/Community_//g' | sed 's/\.txt//g' | sed 's/\:/\t/g' | sed 's/M[0-9]\+D\t/MD\t/g' | sed 's/M[0-9]\+D[0-9]\+D\t/MDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDD\t/g' | sed 's/M[0-9]\+D[0-9]\+D[0-9]\+D[0-9]\+D\t/MDDDD\t/g' > list &&
 
 Rscript $scripts/summary.R list &&
-
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -334,7 +323,7 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode filt.coef &&
@@ -354,8 +343,7 @@ while IFS=$'\t' read -r id m; do grep $id ./*txt;done< $pwd/MDDD/Community_M.txt
 
 Rscript $scripts/summary.R list &&
 
-tail -n +2 Summary_Table.txt > filter &&
-awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' filter > indcode &&
+awk '{if (NR!=1) {print $1"\t"$2"-"$3"-"$4"-"$5"-"$6}}' Summary_Table.txt > indcode &&
 sed -i 's/\-NA/ /g' indcode &&
 sed -i 's/\-\-//g' indcode &&
 sed -i 's/\-$//g' indcode &&
@@ -365,13 +353,12 @@ sed -i 's/\- \- \- \-//g' indcode &&
 sed -i 's/\- \- \- \- \-//g' indcode &&
 cut -f2 indcode |sort| uniq -c | sed -e 's/^ *//;s/ /\t/' >tmp &&
 awk 'NR == FNR{a[$2] = $1;next}; {print $1"\t"$2, $2 in a?a[$2]: "NA"}' tmp indcode | awk '$3 < 10 {$2 = $3 = "["$2"]"} 1 {print $1"\t"$2}' > indcode2 &&
-rm indcode tmp filter &&
+rm indcode tmp &&
 mv indcode2 indcode &&
 
 sh $scripts/SumMatrix.sh indcode coef.* 
 
 else 
-
 sh $scripts/SumMatrix.sh indcode $pwd/MDD/coef.* &&
 rm list indcode Rplots.pdf &&
 mv filt.coef coef.${PWD##*/} 
