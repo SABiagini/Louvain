@@ -8,7 +8,7 @@ exists()
   [ -e "$1" ]
 }
 
-sed 's/://g' $pwd/Community_M_pval.txt | cut -d' ' -f3,5 | awk '$2>0.05'| cut -d' ' -f1 > $pwd/M_rem && fgrep -wvf $pwd/M_rem $pwd/M/Community_M.txt > $pwd/M/Community_M_tmp && fgrep -wvf $pwd/M/Community_M_tmp $pwd/M/Community_M.txt | cut -f1 > $pwd/REM && rm $pwd/M/Community_M.txt && mv $pwd/M/Community_M_tmp $pwd/M/Community_M.txt && fgrep -vwf REM edgelist.coef > M/filt.coef && rm REM &&
+sed 's/://g' $pwd/Community_M_pval.txt | cut -d' ' -f3,5 | awk '$2>0.05'| cut -d' ' -f1 > $pwd/M_rem && fgrep -wvf $pwd/M_rem $pwd/M/Community_M.txt > $pwd/M/Community_M_tmp && fgrep -wvf $pwd/M/Community_M_tmp $pwd/M/Community_M.txt | cut -f1 > $pwd/REM && rm $pwd/M/Community_M.txt && mv $pwd/M/Community_M_tmp $pwd/M/Community_M.txt && fgrep -vwf REM *.coef > M/filt.coef && rm REM &&
 
 for i in $pwd/*/*.txt
 do
